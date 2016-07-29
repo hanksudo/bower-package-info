@@ -18,4 +18,5 @@ fi
 
 URL=`echo $1/master/bower.json | sed 's/github\.com/raw.githubusercontent.com/g'`
 
-http $URL | jq '.dependencies | keys | .[]' | xargs -I {} http GET "https://libraries.io/api/bower-search?q={}" | jq -r '.[0] | .name + " - " + .description'
+http $URL | jq '.dependencies | keys | .[]' | xargs -I {} http GET "https://libraries.io/api/bower-search?q={}" | jq -r '.[0] | "- [" + .name + "](" + .homepage + ")" + "\n" + .description + "\n"'
+
