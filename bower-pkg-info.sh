@@ -1,6 +1,6 @@
 #!/bin/sh
 # Usage: ./bower-pkg-info.sh https://github.com/FreeCodeCamp/FreeCodeCamp
-# dependencies: httpie, jq
+# dependencies: jq
 
 set -e
 
@@ -18,5 +18,5 @@ fi
 
 URL=`echo $1/master/bower.json | sed 's/github\.com/raw.githubusercontent.com/g'`
 
-http $URL | jq '.dependencies | keys | .[]' | xargs -I {} http GET "https://libraries.io/api/bower-search?q={}" | jq -r '.[0] | "- [" + .name + "](" + .homepage + ")" + "\n" + .description + "\n"'
+curl $URL | jq '.dependencies | keys | .[]' | xargs -I {} http GET "https://libraries.io/api/bower-search?q={}" | jq -r '.[0] | "- [" + .name + "](" + .homepage + ")" + "\n" + .description + "\n"'
 

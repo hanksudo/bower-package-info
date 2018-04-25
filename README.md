@@ -2,19 +2,15 @@
 
 Know project's bower packages easily
 
-## Shell Script version
+## Dependencies
 
-### Dependencies
-
-- httpie (https://github.com/jkbrzt/httpie)
 - jq (https://stedolan.github.io/jq/)
 
-### Installation
+## Installation
 
 ```bash
-brew install httpie jq
-curl https://raw.githubusercontent.com/hanksudo/bower-package-info/master/bower-pkg-info.sh > ~/bin/bower-pkg-info
-chmod a+x ~/bin/bower-pkg-info
+brew install jq
+curl https://raw.githubusercontent.com/hanksudo/bower-package-info/master/bower-pkg-info.sh > ~/bin/bower-pkg-info && chmod +x ~/bin/bower-pkg-info
 ```
 
 ### Usage
